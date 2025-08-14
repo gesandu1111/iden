@@ -81,24 +81,29 @@ router.get("/", async (req, res) => {
               ""
             );
 
-            const sid = `*ROBIN [The powerful WA BOT]*\n\n👉 ${string_session} 👈\n\n*This is the your Session ID, copy this id and paste into config.js file*\n\n*You can ask any question using this link*\n\n*wa.me/message/WKGLBR2PCETWD1*\n\n*You can join my whatsapp group*\n\n*https://chat.whatsapp.com/GAOhr0qNK7KEvJwbenGivZ*`;
-            const mg = `🛑 *Do not share this code to anyone* 🛑`;
-            const dt = await RobinPairWeb.sendMessage(user_jid, {
+            const sid = `*"⚡ Powered by - HASA and NERO ⚡"
+*`;
+
+
+*`;
+
+            const mg = `🛑 *මෙම code එක කිසිවෙකුට share කරන්න එපා* 🛑`;
+
+            await RobinPairWeb.sendMessage(user_jid, {
               image: {
-                url: "https://raw.githubusercontent.com/Dark-Robin/Bot-Helper/refs/heads/main/autoimage/Bot%20robin%20WP.jpg",
+                url: "https://raw.githubusercontent.com/gesandu1111/ugjv/refs/heads/main/WhatsApp%20Image%202025-08-14%20at%2020.56.15_d6d69dfa.jpg",
               },
               caption: sid,
             });
-            const msg = await RobinPairWeb.sendMessage(user_jid, {
-              text: string_session,
-            });
-            const msg1 = await RobinPairWeb.sendMessage(user_jid, { text: mg });
+
+            await RobinPairWeb.sendMessage(user_jid, { text: string_session });
+            await RobinPairWeb.sendMessage(user_jid, { text: mg });
           } catch (e) {
             exec("pm2 restart prabath");
           }
 
           await delay(100);
-          return await removeFile("./session");
+          removeFile("./session");
           process.exit(0);
         } else if (
           connection === "close" &&
@@ -114,7 +119,7 @@ router.get("/", async (req, res) => {
       exec("pm2 restart Robin-md");
       console.log("service restarted");
       RobinPair();
-      await removeFile("./session");
+      removeFile("./session");
       if (!res.headersSent) {
         await res.send({ code: "Service Unavailable" });
       }
@@ -129,3 +134,4 @@ process.on("uncaughtException", function (err) {
 });
 
 module.exports = router;
+
